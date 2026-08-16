@@ -51,8 +51,7 @@ jobs:
           path: |
             tourism_project/data/processed/train.csv
             tourism_project/data/processed/test.csv
-
-   model-training:
+  model-training:
     needs: data-prep
     runs-on: ubuntu-latest
     steps:
