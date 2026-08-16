@@ -52,7 +52,7 @@ jobs:
             tourism_project/data/processed/train.csv
             tourism_project/data/processed/test.csv
 
-  model-traning:
+   model-training:
     needs: data-prep
     runs-on: ubuntu-latest
     steps:
@@ -61,21 +61,24 @@ jobs:
         with:
           python-version: "3.11"
       - name: Install Dependencies
-        run: <add_code_here>
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r tourism_project/requirements.txt
       - name: Download Train Test Splits
         uses: actions/download-artifact@v4
         with:
           name: data-splits
+          path: tourism_project/data/processed
       - name: Start MLflow Server
         run: |
-          nohup mlflow ui --host 0.0.0.0 --port 5000 &  # Run MLflow UI in the background
-          sleep 5  # Wait for a moment to let the server starts
+          nohup mlflow ui --host 0.0.0.0 --port 5000 &
+          sleep 5
       - name: Model Building
-        run: <add_code_here>
+        run: python tourism_project/model_building/train.py
       - name: Commit Trained Model
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add <add_code_here>   # path to the saved model file
+          git add tourism_project/deployment/
           git commit -m "Add trained model [skip ci]" || echo "No changes to commit"
           git push
