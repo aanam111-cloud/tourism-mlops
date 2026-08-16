@@ -1,0 +1,37 @@
+{
+  "best_model_name": "GradientBoosting",
+  "best_params": {
+    "clf__subsample": "1.0",
+    "clf__n_estimators": "200",
+    "clf__max_depth": "7",
+    "clf__learning_rate": "0.1"
+  },
+  "best_test_f1": 0.8275862068965517,
+  "all_results": {
+    "DecisionTree": {
+      "cv_f1": 0.667648742199495,
+      "test_f1": 0.7419354838709677
+    },
+    "RandomForest": {
+      "cv_f1": 0.5489903703358493,
+      "test_f1": 0.5665236051502146
+    },
+    "GradientBoosting": {
+      "cv_f1": 0.7520941091230101,
+      "test_f1": 0.8275862068965517
+    },
+    "AdaBoost": {
+      "cv_f1": 0.41209455163372216,
+      "test_f1": 0.4247787610619469
+    },
+    "Bagging": {
+      "cv_f1": 0.7240022642321492,
+      "test_f1": 0.7670250896057348
+    },
+    "XGBoost": {
+      "cv_f1": 0.6721918233569086,
+      "test_f1": 0.7164179104477612
+    }
+  },
+  "timestamp": "2026-08-16T18:08:13.386300Z"
+}
